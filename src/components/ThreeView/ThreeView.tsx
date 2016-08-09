@@ -11,6 +11,7 @@ import {
   CubeGeometry,
   MeshNormalMaterial
 } from 'three'
+import ColliderScene from '../../lib/ColliderScene'
 
 export default class ThreeView extends Component<{
   canvasId?: string
@@ -22,7 +23,7 @@ export default class ThreeView extends Component<{
   private canvas: HTMLCanvasElement
   private container: Element
   private renderer: WebGLRenderer
-  private scene: Scene
+  private scene: ColliderScene
   private camera: PerspectiveCamera
 
   componentDidMount() {
@@ -35,7 +36,7 @@ export default class ThreeView extends Component<{
     this.renderer = new WebGLRenderer({
       canvas: this.canvas
     })
-    this.scene = new Scene()
+    this.scene = new ColliderScene()
     this.camera = new PerspectiveCamera(65, this.canvas.clientWidth / this.canvas.clientHeight, 1, 10000)
 
     this.camera.position.y = 150

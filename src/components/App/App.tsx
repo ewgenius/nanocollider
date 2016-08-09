@@ -1,5 +1,6 @@
 import * as React from 'react'
 import {Component} from 'react'
+import {connect} from 'react-redux'
 require('../../../src/styles/main.scss')
 require('../../../src/components/App/App.scss')
 
@@ -8,13 +9,19 @@ import {MuiThemeProvider} from 'material-ui/styles'
 import {getMuiTheme, lightBaseTheme} from 'material-ui/styles'
 
 import Drawer from 'material-ui/Drawer'
+import FlatButton from 'material-ui/FlatButton'
+import RaisedButton from 'material-ui/RaisedButton'
 import ThreeView from '../ThreeView/ThreeView'
 
 injectTapEventPlugin()
 
 const theme = getMuiTheme()
 
-export default class App extends Component<{}, {}> {
+const mapState = state => ({
+
+})
+
+class App extends Component<{}, {}> {
   render() {
     return <MuiThemeProvider muiTheme={theme}>
       <div className='app'>
@@ -22,7 +29,9 @@ export default class App extends Component<{}, {}> {
           open={true}
           docked={true}
           width={300}>
-          drawer
+          <div className='sidebar-content'>
+            <RaisedButton primary label='start'/>
+          </div>
         </Drawer>
 
         <div className='content'>
@@ -32,3 +41,4 @@ export default class App extends Component<{}, {}> {
     </MuiThemeProvider>
   }
 }
+export default connect(mapState)(App)
